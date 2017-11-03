@@ -1,29 +1,17 @@
 <template>
     <div>
         <IngredientForm :ingredients="ingredients" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/>
-
-        <!-- <form v-on:submit.prevent>
-            <input v-model="newIngredient" @keyup="setNew" type="text">
-            <button type="submit" @click="addToList"></button>
-        </form> -->
-        <ul>
-            <li v-for="(item, index) in ingredients" :key="index">{{ item }}</li>
-        </ul>
+        <IngredientList :ingredients="ingredients" />
     </div>
 </template>
 
 <script>
     import IngredientForm from "./IngredientForm";
+    import IngredientList from './IngredientList';
 
     export default {
         name: "Ingredients",
         props: [ "ingredients", "newIngredient" ],
-        // data () {
-        //     return {
-        //         ingredientList: this.ingredients,
-        //         newIngredient: this.new
-        //     }
-        // },
         methods: {
             onNewIngredient(item) {
                 this.$emit("onNewIngredient", item)
@@ -34,7 +22,8 @@
             }
         },
         components: {
-            IngredientForm
+            IngredientForm,
+            IngredientList
         }
 
     }
