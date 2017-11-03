@@ -1,8 +1,9 @@
 <template>
     <div>
         <h1>Recipe Finder</h1>
-        <form action="">
-            <input v-model="newIngredient" type="text">
+        <form v-on:submit.prevent>
+            <input v-model="newIngredient" @keyup="setNew" type="text">
+            <button type="submit" @click="addToList"></button>
         </form>
         <ul>
             <li v-for="(item, index) in ingredientList" :key="index">{{ item }}</li>
@@ -13,19 +14,29 @@
 <script>
     export default {
         name: "FindRecipes",
+        props: [ "ingredients", "new" ],
         data () {
             return {
-                ingredientList: [
-                    "basil",
-                    "tomato",
-                    "onion",
-                    "salt",
-                    "pepper",
-                    "olive oil"
-                ],
-                newIngredient: ""
+                ingredientList: this.ingredients,
+                newIngredient: this.new
+            }
+        },
+        methods: {
+            setNew(e) {
+                this.$emit("onNewIngredient", e.target.value.toLowerCase())
+            },
+
+            addToList() {
+                if (this.newIngredient && !this.ingredientList.includes(this.new)) {
+                    this.$emit("addIngredient", this.newIngredient)
+                    this.$emit("onNewIngredient", "")
+                    this.newIngredient = ""
+                } else {
+                    alert("Must enter a new ingredient")
+                }
             }
         }
+
     }
 </script>
 

@@ -17,7 +17,11 @@
             <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
             <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
         </ul>
-        <FindRecipes />
+        <FindRecipes :ingredients="ingredientList" :new="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/>
+
+         <!-- <form action="">
+            <input v-model="newIngredient" type="text">
+        </form> -->
     </div>
 </template>
 
@@ -25,10 +29,28 @@
     import FindRecipes from './FindRecipes.vue'
 
     export default {
-        name: 'HelloWorld',
+        name: 'Home',
         data () {
             return {
-            msg: 'Welcome to Your Vue.js App'
+                msg: 'Welcome to Your Vue.js App',
+                ingredientList: [
+                    "basil",
+                    "tomato",
+                    "onion",
+                    "salt",
+                    "pepper",
+                    "olive oil"
+                ],
+                newIngredient: ""
+            }
+        },
+        methods: {
+            onNewIngredient(item) {
+                this.newIngredient = item
+            },
+
+            addIngredient(item) {
+                this.ingredientList.push(item)
             }
         },
         components: {
