@@ -21,9 +21,6 @@
         <!-- <FindRecipes :ingredients="ingredientList" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/> -->
         <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/>
 
-         <!-- <form action="">
-            <input v-model="newIngredient" type="text">
-        </form> -->
     </div>
 </template>
 
