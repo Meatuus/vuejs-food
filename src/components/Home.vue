@@ -17,7 +17,9 @@
             <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
             <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
         </ul>
-        <FindRecipes :ingredients="ingredientList" :new="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/>
+        <h2>Recipe Finder</h2>
+        <!-- <FindRecipes :ingredients="ingredientList" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/> -->
+        <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/>
 
          <!-- <form action="">
             <input v-model="newIngredient" type="text">
@@ -27,6 +29,7 @@
 
 <script>
     import FindRecipes from './FindRecipes.vue'
+    import Ingredients from './Ingredients.vue'
 
     export default {
         name: 'Home',
@@ -54,7 +57,8 @@
             }
         },
         components: {
-            FindRecipes
+            FindRecipes,
+            Ingredients
         }
     }
 </script>
