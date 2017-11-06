@@ -18,9 +18,8 @@
             <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
         </ul>
         <h2>Recipe Finder</h2>
-        <!-- <FindRecipes :ingredients="ingredientList" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/> -->
-        <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/>
-
+        <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient"/>
+        <FindRecipes :ingredients="ingredientList" />        
     </div>
 </template>
 

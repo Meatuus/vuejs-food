@@ -2,7 +2,7 @@
     <div>
         <form v-on:submit.prevent>
             <input v-model="ingredient" @keyup="setNew" type="text">
-            <button type="submit" @click="addToList"></button>
+            <button type="submit" @click="addToList">Add</button>
         </form>
     </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <IngredientForm :ingredients="ingredients" :newIngredient="newIngredient" v-on:onNewIngredient="onNewIngredient" v-on:addIngredient="addIngredient"/>
+        <IngredientForm :ingredients="ingredients" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient"/>
         <IngredientList :ingredients="ingredients" />
     </div>
 </template>
