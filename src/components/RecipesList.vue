@@ -1,10 +1,5 @@
 <template>
     <div>
-        <!-- <h1>Recipes</h1> -->
-        <!-- <form v-on:submit.prevent> -->
-            <!-- <input v-model="newIngredient" @keyup="setNew" type="text"> -->
-            <!-- <button type="submit" @click="searchRecipes">Find Recipes</button>
-        </form> -->
         <ul>
             <li v-for="(item, index) in recipes" :key="index">
                 <h3>{{ item.recipe.label }}</h3>
@@ -25,48 +20,10 @@
 </template>
 
 <script>
-    // import { id, key, url } from '../../api.js';
-    // import RecipesList from './RecipesList';
 
     export default {
         name: "RecipesList",
-        props: [ "recipes" ],
-        // data () {
-        //     return {
-        //         ingredientList: this.ingredients,
-        //         recipeMatches: []
-        //     }
-        // }
-        // methods: {
-            // searchRecipes() {
-
-            //     const combineIngredients = (array) => { return array.reduce((acc, cur) => {return `${acc},${cur}`})}
-
-            //     fetch(`${url}?q=${combineIngredients(this.ingredientList)}&app_id=${id}&app_key=${key}`)
-            //         .then((response) => {
-            //             return response.json()
-            //         })
-            //         .then((json) => {
-            //             this.recipeMatches = json.hits
-            //         })
-            //         .catch((ex) => {
-            //             console.log('An error occured while parsing!', ex);
-            //         })
-            // }
-            // setNew(e) {
-            //     this.$emit("onNewIngredient", e.target.value.toLowerCase())
-            // },
-
-            // addToList() {
-            //     if (this.newIngredient && !this.ingredientList.includes(this.new)) {
-            //         this.$emit("addIngredient", this.newIngredient)
-            //         this.$emit("onNewIngredient", "")
-            //         this.newIngredient = ""
-            //     } else {
-            //         alert("Must enter a new ingredient")
-            //     }
-            // }
-        // }
+        props: [ "recipes" ]
     }
 </script>
 
