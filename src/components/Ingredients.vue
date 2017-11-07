@@ -16,7 +16,6 @@
             onNewIngredient(item) {
                 this.$emit("onNewIngredient", item)
             },
-
             addIngredient(item) {
                 this.$emit("addIngredient", item)
             },

@@ -18,6 +18,20 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+    button {
+        background: #ff6565;
+        border-radius: 2px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 5px 11px;
+    }
+
+    button:hover {
+        background: #f33939;
+    }
     /* h1, h2 {
         font-weight: normal;
     }
