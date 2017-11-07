@@ -1,6 +1,6 @@
 <template>
     <div>
-        <IngredientForm :ingredients="ingredients" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient"/>
+        <IngredientForm :ingredients="ingredients" :newIngredient="newIngredient" :exactIngredient="exactIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onExactIngredient="onExactIngredient" />
         <IngredientList :ingredients="ingredients" @onDeleteItem="onDeleteItem" />
     </div>
 </template>
@@ -11,7 +11,7 @@
 
     export default {
         name: "Ingredients",
-        props: [ "ingredients", "newIngredient" ],
+        props: [ "ingredients", "newIngredient", "exactIngredient" ],
         methods: {
             onNewIngredient(item) {
                 this.$emit("onNewIngredient", item)
@@ -21,6 +21,9 @@
             },
             onDeleteItem(index) {
                 this.$emit("onDeleteItem", index)
+            },
+            onExactIngredient(bool) {
+                this.$emit("onExactIngredient", bool)
             }
         },
         components: {

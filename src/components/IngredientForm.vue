@@ -5,13 +5,15 @@
             <input id="ingredient" v-model="ingredient" @keyup="setNew" type="text">
             <button type="submit" @click="addToList">Add</button>
         </form>
+        <label for="checkbox">Check to search recipes with only your ingredients</label>
+        <input id="checkbox" type="checkbox" @click="exactIngredientChange">
     </div>
 </template>
 
 <script>
     export default {
         name: "IngredientForm",
-        props: [ "ingredients", "newIngredient" ],
+        props: [ "ingredients", "newIngredient", "exactIngredient" ],
         data () {
             return {
                 ingredient: this.newIngredient
@@ -30,6 +32,10 @@
                 } else {
                     alert("Must enter a NEW ingredient")
                 }
+            },
+            exactIngredientChange(e) {
+                console.log(e.target.checked);
+                this.$emit("onExactIngredient", e.target.checked)
             }
         }
 

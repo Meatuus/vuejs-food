@@ -6,7 +6,7 @@
             </div>
             <h1>Recipe Finder</h1>
         </header>
-        <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onDeleteItem="onDeleteItem" />
+        <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" :exactIngredients="exactIngredients" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onDeleteItem="onDeleteItem" @onExactIngredient="onExactIngredient" />
         <ClearList @onClearList="onClearList" />
         <FindRecipes :ingredients="ingredientList" />        
     </div>
@@ -30,7 +30,8 @@
                     "pepper",
                     "olive oil"
                 ],
-                newIngredient: ""
+                newIngredient: "",
+                exactIngredients: false
             }
         },
         methods: {
@@ -49,6 +50,10 @@
             onClearList() {
                 console.log('clearing list!');
                 this.ingredientList = []
+            },
+            onExactIngredient(bool) {
+                console.log('inside exact');
+                this.exactIngredients = bool;
             }
         },
         components: {
