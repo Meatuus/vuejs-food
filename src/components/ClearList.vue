@@ -1,21 +1,15 @@
 <template>
     <div>
-        <ul>
-            <li v-for="(item, index) in ingredients" :key="index">
-                <p>{{ item }}</p>
-                <button @click="deleteItem(index)" >X</button>
-            </li>
-        </ul>
+        <button @click="onClearList">Clear List</button>
     </div>
 </template>
 
 <script>
     export default {
-        name: "IngredientList",
-        props: [ "ingredients" ],
+        name: "ClearList",
         methods: {
-            deleteItem(index) {
-                this.$emit("onDeleteItem", index)
+            onClearList() {
+                this.$emit("onClearList")
             }
         }
 

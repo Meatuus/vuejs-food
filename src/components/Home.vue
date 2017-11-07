@@ -19,6 +19,7 @@
         </ul>
         <h2>Recipe Finder</h2>
         <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onDeleteItem="onDeleteItem" />
+        <ClearList @onClearList="onClearList" />
         <FindRecipes :ingredients="ingredientList" />        
     </div>
 </template>
@@ -26,6 +27,7 @@
 <script>
     import FindRecipes from './FindRecipes.vue'
     import Ingredients from './Ingredients.vue'
+    import ClearList from './ClearList'
 
     export default {
         name: 'Home',
@@ -49,15 +51,22 @@
             },
 
             addIngredient(ingredient) {
+                console.log('ingredient added!');
                 this.ingredientList.push(ingredient)
             },
             onDeleteItem(index) {
+                console.log('deleting item!');
                 this.$delete(this.ingredientList, index)
+            },
+            onClearList() {
+                console.log('clearing list!');
+                this.ingredientList = []
             }
         },
         components: {
             FindRecipes,
-            Ingredients
+            Ingredients,
+            ClearList
         }
     }
 </script>
