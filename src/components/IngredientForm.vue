@@ -13,7 +13,6 @@
         props: [ "ingredients", "newIngredient" ],
         data () {
             return {
-                ingredientList: this.ingredients,
                 ingredient: this.newIngredient
             }
         },
@@ -23,12 +22,12 @@
             },
 
             addToList() {
-                if (this.ingredient && !this.ingredientList.includes(this.newIngredient)) {
+                if (this.ingredient && !this.ingredients.includes(this.newIngredient)) {
                     this.$emit("addIngredient", this.ingredient)
                     this.$emit("onNewIngredient", "")
                     this.ingredient = ""
                 } else {
-                    alert("Must enter a new ingredient")
+                    alert("Must enter a NEW ingredient")
                 }
             }
         }
