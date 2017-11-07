@@ -32,23 +32,19 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    /* h1, h2 {
-        font-weight: normal;
+    button {
+        border: none;
+        background: #8dd4b2;
+        color: #374a5e;
+        font-weight: bold;
+        font-size: 16px;
+        border-radius: 2px;
+        padding: 7px 15px;
+        cursor: pointer;
     }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
+    button:hover {
+        background: #bae5d1;
     }
-
-    li {
-        display: inline-block;
-        margin: 0 10px;
-    }
-
-    a {
-        color: #42b983;
-    } */
 </style>

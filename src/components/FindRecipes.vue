@@ -1,7 +1,9 @@
 <template>
-    <div>
-        <h2>Find Recipes</h2>
-        <recipes-search :ingredients="ingredients" @onNewRecipes="onNewRecipes" />
+    <div class="recipe-container">
+        <div class="recipe-search">
+            <h2 class="recipe-title">Lets Find Some Recipes</h2>
+            <recipes-search :ingredients="ingredients" @onNewRecipes="onNewRecipes" />
+        </div>
         <h2 v-if="recipeMatches.length > 0">Recipes</h2>
         <recipes-list :recipes="recipeMatches" />
     </div>
@@ -32,23 +34,21 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    /* h1, h2 {
-        font-weight: normal;
+
+    .recipe-container {
+        border-top: 1px solid #577d7d;
+        margin: 40px;
     }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
+    .recipe-search {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
     }
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
+    .recipe-title {
+        margin-right: 30px;
     }
-
-    a {
-        color: #42b983;
-    } */
 </style>

@@ -1,14 +1,14 @@
 <template>
     <div>
         <ul>
-            <li v-for="(item, index) in recipes" :key="index">
+            <li class="item-container" v-for="(item, index) in recipes" :key="index">
                 <h3>{{ item.recipe.label }}</h3>
-                <div>
-                    <div>
+                <div class="recipe-container">
+                    <div class="image-wrap">
                         <img :src="item.recipe.image" alt="">
                     </div>
-                    <div>
-                        <ul>
+                    <div class="info">
+                        <ul class="ingredients">
                             <li v-for="(ing, i) in item.recipe.ingredientLines" :key="i" >{{ ing }}</li>
                         </ul>
                         <a :href="item.recipe.url" target="_blank">View Recipe</a>
@@ -27,23 +27,51 @@
     }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-    /* h1, h2 {
-        font-weight: normal;
-    }
-
     ul {
         list-style-type: none;
         padding: 0;
     }
 
-    li {
-        display: inline-block;
-        margin: 0 10px;
+    a {
+        text-decoration: none;
+        text-align: left;
+        margin: 25px 0 20px 20px;
+        background: #2d3f51;
+        width: max-content;
+        padding: 7px 15px;
+        border-radius: 2px;
+        color: white;
+        font-weight: bold;
     }
 
-    a {
-        color: #42b983;
-    } */
+    a:hover {
+        background: rgba(45, 63, 81, 0.84);
+    }
+
+    .item-container {
+        background: rgba(141, 212, 179, 0.41);
+        padding: 1px 20px 20px 20px;
+        margin: 20px 0;
+    }
+
+    .recipe-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .info {
+        width: calc(100% - 180px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .ingredients {
+        text-align: left;
+        margin-left: 20px;
+    }
+
 </style>
