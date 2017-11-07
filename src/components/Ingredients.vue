@@ -1,7 +1,7 @@
 <template>
     <div>
         <IngredientForm :ingredients="ingredients" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient"/>
-        <IngredientList :ingredients="ingredients" />
+        <IngredientList :ingredients="ingredients" @onDeleteItem="onDeleteItem" />
     </div>
 </template>
 
@@ -19,6 +19,9 @@
 
             addIngredient(item) {
                 this.$emit("addIngredient", item)
+            },
+            onDeleteItem(index) {
+                this.$emit("onDeleteItem", index)
             }
         },
         components: {

@@ -18,7 +18,7 @@
             <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
         </ul>
         <h2>Recipe Finder</h2>
-        <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient"/>
+        <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onDeleteItem="onDeleteItem" />
         <FindRecipes :ingredients="ingredientList" />        
     </div>
 </template>
@@ -50,6 +50,9 @@
 
             addIngredient(ingredient) {
                 this.ingredientList.push(ingredient)
+            },
+            onDeleteItem(index) {
+                this.$delete(this.ingredientList, index)
             }
         },
         components: {

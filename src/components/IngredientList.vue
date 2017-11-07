@@ -1,7 +1,10 @@
 <template>
     <div>
         <ul>
-            <li v-for="(item, index) in ingredientList" :key="index">{{ item }}</li>
+            <li v-for="(item, index) in ingredientList" :key="index">
+                <p>{{ item }}</p>
+                <button @click="deleteItem(index)" >X</button>
+            </li>
         </ul>
     </div>
 </template>
@@ -14,22 +17,12 @@
             return {
                 ingredientList: this.ingredients
             }
+        },
+        methods: {
+            deleteItem(index) {
+                this.$emit("onDeleteItem", index)
+            }
         }
-        // methods: {
-        //     setNew(e) {
-        //         this.$emit("onNewIngredient", e.target.value.toLowerCase())
-        //     },
-
-        //     addToList() {
-        //         if (this.ingredient && !this.ingredientList.includes(this.newIngredient)) {
-        //             this.$emit("addIngredient", this.ingredient)
-        //             this.$emit("onNewIngredient", "")
-        //             this.ingredient = ""
-        //         } else {
-        //             alert("Must enter a new ingredient")
-        //         }
-        //     }
-        // }
 
     }
 </script>
