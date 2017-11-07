@@ -44,12 +44,12 @@
             }
         },
         methods: {
-            onNewIngredient(item) {
-                this.newIngredient = item
+            onNewIngredient(ingredient) {
+                this.newIngredient = ingredient
             },
 
-            addIngredient(item) {
-                this.ingredientList.push(item)
+            addIngredient(ingredient) {
+                this.ingredientList.push(ingredient)
             }
         },
         components: {
