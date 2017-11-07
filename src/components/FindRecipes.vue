@@ -6,7 +6,20 @@
             <button type="submit" @click="searchRecipes">Find Recipes</button>
         </form>
         <ul>
-            <li v-for="(item, index) in recipeMatches" :key="index">{{ item }}</li>
+            <li v-for="(item, index) in recipeMatches" :key="index">
+                <h3>{{ item.recipe.label }}</h3>
+                <div>
+                    <div>
+                        <img :src="item.recipe.image" alt="">
+                    </div>
+                    <div>
+                        <ul>
+                            <li v-for="(ing, i) in item.recipe.ingredientLines" :key="i" >{{ ing }}</li>
+                        </ul>
+                        <a :href="item.recipe.url">View Recipe</a>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </template>
@@ -25,23 +38,14 @@
         },
         methods: {
             searchRecipes() {
-                // combineIngredients(ingredients) {
-                //     let result = ingredients.reduce(function (accumulator, currentValue) {
-                //         return `${accumulator},${currentValue}`;
-                //     });
-                //     return result
-                // }
-                let combineIngredients = (ingredients) => { ingredients.reduce(function (accumulator, currentValue) {
-                        return `${accumulator},${currentValue}`;
-                    })}
+
+                const combineIngredients = (array) => { return array.reduce((acc, cur) => {return `${acc},${cur}`})}
 
                 fetch(`${url}?q=${combineIngredients(this.ingredientList)}&app_id=${id}&app_key=${key}`)
-                // fetch(`${url}?q=${ingredientsList.length > 1 ? combineIngredients(ingredientsList) : ingredientsList[0]}&app_id=${id}&app_key=${key}&ingr=${ingredientsList.length + parseInt(extrasAllowed, 10)}&to=30`)
                     .then((response) => {
                         return response.json()
                     })
                     .then((json) => {
-                        // onNewRecipes(json.hits)
                         this.recipeMatches = json.hits
                     })
                     .catch((ex) => {
