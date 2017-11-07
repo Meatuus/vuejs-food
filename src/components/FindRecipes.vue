@@ -2,7 +2,7 @@
     <div class="recipe-container">
         <div class="recipe-search">
             <h2 class="recipe-title">Lets Find Some Recipes</h2>
-            <recipes-search :ingredients="ingredients" @onNewRecipes="onNewRecipes" />
+            <recipes-search :ingredients="ingredients" :recipes="recipeMatches" @onNewRecipes="onNewRecipes" />
         </div>
         <h2 v-if="recipeMatches.length > 0">Recipes</h2>
         <recipes-list :recipes="recipeMatches" />

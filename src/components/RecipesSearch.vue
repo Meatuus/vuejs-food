@@ -11,22 +11,55 @@
 
     export default {
         name: "RecipesSearch",
-        props: [ "ingredients" ],
+        props: [ "ingredients", "recipes" ],
+        data () {
+            return {
+                recipeMatches: []
+            }
+        },
         methods: {
             searchRecipes() {
 
                 const combineIngredients = (array) => { return array.reduce((acc, cur) => {return `${acc},${cur}`})}
+                const urlCall = `${url}?q=${combineIngredients(this.ingredients)}&app_id=${id}&app_key=${key}`
 
-                fetch(`${url}?q=${combineIngredients(this.ingredients)}&app_id=${id}&app_key=${key}`)
+                fetch(`${urlCall}&ingr=${this.ingredients.length}&to=30`)
                     .then((response) => {
                         return response.json()
                     })
                     .then((json) => {
-                        this.$emit("onNewRecipes", json.hits)
+                        this.recipeMatches = json.hits
+                        this.$emit("onNewRecipes", this.recipeMatches)
+
+                        // call second request with more allowed ingredients
+                        if (this.recipeMatches.length < 30) {
+                            fetch(`${urlCall}&ingr=${this.ingredients.length + 1}&to=30`)
+                                .then((res) => {
+                                    return res.json()
+                                })
+                                .then((blob) => {
+                                    let array = []
+                                    this.recipeMatches.forEach(function(element) {
+                                        array.push(element.recipe.label)
+                                    }, this);
+                                    blob.hits.forEach(function(element) {
+                                        if (!array.includes(element.recipe.label)) {
+                                            this.recipeMatches.push(element)
+                                            console.log('not duplicate');
+                                        }
+                                    }, this);
+                                    this.$emit("onNewRecipes", this.recipeMatches)
+                                })
+                                .catch((err) => {
+                                    console.log('An error occured while parsing!', err);
+                                })
+                        }
                     })
                     .catch((ex) => {
                         console.log('An error occured while parsing!', ex);
                     })
+
+                
             }
         }
     }
