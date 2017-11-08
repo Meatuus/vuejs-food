@@ -22,14 +22,7 @@
         data () {
             return {
                 msg: 'Welcome to Your Vue.js App',
-                ingredientList: [
-                    "basil",
-                    "tomato",
-                    "onion",
-                    "salt",
-                    "pepper",
-                    "olive oil"
-                ],
+                ingredientList: [],
                 newIngredient: "",
                 exactIngredients: false
             }
