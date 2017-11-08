@@ -102,14 +102,6 @@
         margin: 10px 10px 10px 0;
     }
 
-    /* input#checkbox {
-        margin: 10px 0;
-        height: 20px;
-        border: none;
-        background: red;
-        font-size: 20px;
-    } */
-
     label.exact-label {
         width: 20px;
         height: 20px;
