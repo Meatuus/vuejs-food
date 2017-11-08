@@ -1,6 +1,6 @@
 <template>
     <div class="recipe-container">
-        <div class="recipe-search">
+        <div v-if="ingredients.length > 0" :class="{ active: hasResults }" class="recipe-search">
             <h2 class="recipe-title">Lets Find Some Recipes</h2>
             <recipes-search :ingredients="ingredients" :recipes="recipeMatches" :exactIngredients="exactIngredients" @onNewRecipes="onNewRecipes" />
         </div>
@@ -19,12 +19,14 @@
         props: [ "ingredients", "exactIngredients" ],
         data () {
             return {
-                recipeMatches: []
+                recipeMatches: [],
+                hasResults: false
             }
         },
         methods: {
             onNewRecipes(recipes) {
                 this.recipeMatches = recipes
+                this.hasResults = true
             }
         },
         components: {
@@ -51,7 +53,9 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+    }
 
+    .recipe-search.active {
         border-bottom: 1px solid #577d7d;
     }
 

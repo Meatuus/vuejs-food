@@ -1,9 +1,6 @@
 <template>
     <div>
         <header>
-            <div class="logo-wrap">
-                <img src="../assets/logo.png">
-            </div>
             <h1>Recipe Finder</h1>
         </header>
         <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" :exactIngredients="exactIngredients" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onDeleteItem="onDeleteItem" @onExactIngredient="onExactIngredient" />
