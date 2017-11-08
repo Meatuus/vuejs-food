@@ -84,6 +84,9 @@
     h3 {
         font-size: 16px;
         font-weight: normal;
+        width: calc(100% - 65px);
+
+        text-align: left;
     }
 
     .exact-container {
@@ -91,25 +94,22 @@
         align-items: center;
         justify-content: center;
         flex-direction: row-reverse;
+
+        margin: 0 15px;
     }
 
     input[type=checkbox] {
         visibility: hidden;
+        margin: 0;
     }
 
-
-
-    label.exact-label {
-        margin: 10px 10px 10px 0;
-    }
-
-    label.exact-label {
+    .exact-label {
+        margin: 10px 20px 10px 0;
         width: 20px;
         height: 20px;
         border: 1px solid;
         border-radius: 2px;
         background: white;
-        margin: 10px;
         position: relative;
         cursor: pointer;
     }

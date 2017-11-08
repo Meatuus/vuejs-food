@@ -53,6 +53,8 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+
+        padding: 15px 0;
     }
 
     .recipe-search.active {
@@ -60,18 +62,25 @@
     }
 
     .recipe-title {
-        margin-right: 30px;
+        /* margin-right: 30px; */
+        margin: 0 30px 0 0 ;
     }
 
     @media screen and (max-width: 999px) {
         .recipe-container {
-            margin: 20px;
+            margin: 10px 20px;
         }
     }
 
     @media screen and (max-width: 650px) {
         .recipe-container {
             margin: 10px;
+        }
+    }
+
+    @media screen and (max-width: 450px) {
+        .recipe-title {
+            display: none;
         }
     }
 </style>
