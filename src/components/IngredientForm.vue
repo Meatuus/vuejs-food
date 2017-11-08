@@ -5,8 +5,11 @@
             <input id="ingredient" v-model="ingredient" @keyup="setNew" type="text">
             <button type="submit" @click="addToList">Add</button>
         </form>
-        <label for="checkbox">Check to search recipes with only your ingredients</label>
-        <input id="checkbox" type="checkbox" @click="exactIngredientChange">
+        <div class="exact-container">
+            <h3>Check to search recipes with only your ingredients</h3>
+            <label class="exact-label" for="checkbox"><span :class="{checked: exactIngredients}" ></span></label>
+            <input id="checkbox" type="checkbox" @click="exactIngredientChange">
+        </div>
     </div>
 </template>
 
@@ -76,5 +79,60 @@
 
     button:hover {
         background: #bae5d1;
+    }
+
+    h3 {
+        font-size: 16px;
+        font-weight: normal;
+    }
+
+    .exact-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    input[type=checkbox] {
+        visibility: hidden;
+    }
+
+
+
+    label.exact-label {
+        margin: 10px 10px 10px 0;
+    }
+
+    /* input#checkbox {
+        margin: 10px 0;
+        height: 20px;
+        border: none;
+        background: red;
+        font-size: 20px;
+    } */
+
+    label.exact-label {
+        width: 20px;
+        height: 20px;
+        border: 1px solid;
+        border-radius: 2px;
+        background: white;
+        margin: 10px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    span {
+        width: 12px;
+        height: 12px;
+        background: white;
+        border-radius: 2px;
+        content: " ";
+        position: absolute;
+        transform: translateX(-50%) translateY(calc(50% - 2px));
+    }
+
+    .checked {
+        /* left: 27px; */
+        background: #36495e
     }
 </style>
