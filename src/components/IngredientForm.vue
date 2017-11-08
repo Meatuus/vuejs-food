@@ -29,7 +29,7 @@
 
             addToList() {
                 if (this.ingredient && !this.ingredients.includes(this.newIngredient)) {
-                    this.$emit("addIngredient", this.ingredient)
+                    this.$emit("addIngredient", this.ingredient.toLowerCase())
                     this.$emit("onNewIngredient", "")
                     this.ingredient = ""
                 } else {
