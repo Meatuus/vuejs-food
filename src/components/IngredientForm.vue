@@ -13,7 +13,7 @@
 <script>
     export default {
         name: "IngredientForm",
-        props: [ "ingredients", "newIngredient", "exactIngredient" ],
+        props: [ "ingredients", "newIngredient", "exactIngredients" ],
         data () {
             return {
                 ingredient: this.newIngredient

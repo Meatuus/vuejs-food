@@ -8,7 +8,7 @@
         </header>
         <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" :exactIngredients="exactIngredients" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onDeleteItem="onDeleteItem" @onExactIngredient="onExactIngredient" />
         <ClearList @onClearList="onClearList" />
-        <FindRecipes :ingredients="ingredientList" />        
+        <FindRecipes :ingredients="ingredientList" :exactIngredients="exactIngredients" />        
     </div>
 </template>
 

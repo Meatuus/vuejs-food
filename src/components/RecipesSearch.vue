@@ -11,7 +11,7 @@
 
     export default {
         name: "RecipesSearch",
-        props: [ "ingredients", "recipes" ],
+        props: [ "ingredients", "recipes", "exactIngredients" ],
         data () {
             return {
                 recipeMatches: []
@@ -22,8 +22,9 @@
 
                 const combineIngredients = (array) => { return array.reduce((acc, cur) => {return `${acc},${cur}`})}
                 const urlCall = `${url}?q=${combineIngredients(this.ingredients)}&app_id=${id}&app_key=${key}`
+                const ingrNum = this.ingredients.length
 
-                fetch(`${urlCall}&ingr=${this.ingredients.length}&to=30`)
+                fetch(`${urlCall}${this.exactIngredients ? `&ingr=${ingrNum}` : ""}&to=30`)
                     .then((response) => {
                         return response.json()
                     })
@@ -32,8 +33,8 @@
                         this.$emit("onNewRecipes", this.recipeMatches)
 
                         // call second request with more allowed ingredients
-                        if (this.recipeMatches.length < 30) {
-                            fetch(`${urlCall}&ingr=${this.ingredients.length + 1}&to=30`)
+                        if (this.recipeMatches.length < 20 && this.exactIngredients) {
+                            fetch(`${urlCall}&ingr=${ingrNum + 1}&to=30`)
                                 .then((res) => {
                                     return res.json()
                                 })
