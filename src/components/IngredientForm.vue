@@ -88,8 +88,9 @@
 
     .exact-container {
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
     }
 
     input[type=checkbox] {

@@ -42,7 +42,7 @@
     }
 
     .recipe-container {
-        border-top: 1px solid #577d7d;
+        /* border-top: 1px solid #577d7d; */
         margin: 40px;
     }
 
@@ -51,6 +51,8 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
+
+        border-bottom: 1px solid #577d7d;
     }
 
     .recipe-title {
