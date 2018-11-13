@@ -8,8 +8,8 @@
 export default {
   name: "ClearList",
   methods: {
-    onClearList() {
-      this.$emit("onClearList");
+    onClearList() {      
+      this.$store.commit('clearList');
     }
   }
 };

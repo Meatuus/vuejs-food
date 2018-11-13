@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Home />
+    <Home :testProps="$store.state.newIngredient" otherprop="value of some" />
   </div>
 </template>
 

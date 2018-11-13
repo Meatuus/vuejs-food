@@ -1,9 +1,9 @@
 <template>
   <div>
     <ul>
-      <li v-for="(item, index) in ingredients" :key="index">
+      <li v-for="(item, index) in this.$store.state.ingredientList" :key="index">
         <p>{{ item }}</p>
-        <button @click="deleteItem(index)" >X</button>
+        <button @click="deleteIngredient(index)" >X</button>
       </li>
     </ul>
   </div>
@@ -11,11 +11,10 @@
 
 <script>
 export default {
-  name: "IngredientList",
-  props: ["ingredients"],
+  name: "IngredientList",  
   methods: {
-    deleteItem(index) {
-      this.$emit("onDeleteItem", index);
+    deleteIngredient(index) {      
+      this.$store.commit("deleteIngredient", index);
     }
   }
 };

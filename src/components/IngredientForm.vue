@@ -2,13 +2,13 @@
   <div>
     <form v-on:submit.prevent>
       <label for="ingredient">Enter your ingredients</label>
-      <input id="ingredient" v-model="ingredient" @keyup="setNew" type="text">
+      <input id="ingredient" :value="this.$store.state.newIngredient" @keyup="newIngredient" type="text">
       <button type="submit" @click="addToList">Add</button>
     </form>
     <div class="exact-container">
       <h3>Check to search recipes with only your ingredients</h3>
-      <label class="exact-label" for="checkbox"><span :class="{checked: exactIngredients}" ></span></label>
-      <input id="checkbox" type="checkbox" @click="exactIngredientChange">
+      <label class="exact-label" for="checkbox"><span :class="{checked: this.$store.state.exactIngredients}" ></span></label>
+      <input id="checkbox" type="checkbox" @click="exactIngredients">
     </div>
   </div>
 </template>
@@ -16,33 +16,22 @@
 <script>
 export default {
   name: "IngredientForm",
-  props: [
-    "ingredients", 
-    "newIngredient", 
-    "exactIngredients"
-  ],
-  data() {
-    return {
-      ingredient: this.newIngredient
-    };
-  },
   methods: {
-    setNew(e) {
-      this.$emit("onNewIngredient", e.target.value.toLowerCase());
+    newIngredient(e) {
+      this.$store.commit('newIngredient', e.target.value.toLowerCase());
     },
-
     addToList() {
-      if (this.ingredient && !this.ingredients.includes(this.newIngredient)) {
-        this.$emit("addIngredient", this.ingredient.toLowerCase());
-        this.$emit("onNewIngredient", "");
-        this.ingredient = "";
+      const newIngredient = this.$store.state.newIngredient;
+      const ingredientList = this.$store.state.ingredientList;
+      
+      if (newIngredient && !ingredientList.includes(newIngredient)) {
+        this.$store.commit('addIngredient', newIngredient);        
       } else {
         alert("Must enter a NEW ingredient");
       }
     },
-    exactIngredientChange(e) {
-      console.log(e.target.checked);
-      this.$emit("onExactIngredient", e.target.checked);
+    exactIngredients(e) {
+      this.$store.commit('exactIngredients', e.target.checked);
     }
   }
 };

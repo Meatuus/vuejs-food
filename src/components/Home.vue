@@ -3,53 +3,34 @@
     <header>
       <h1>Recipe Finder</h1>
       <!-- <img src="@/assets/logo.png" alt=""> -->
-    </header>
-    <Ingredients :ingredients="ingredientList" :newIngredient="newIngredient" :exactIngredients="exactIngredients" @onNewIngredient="onNewIngredient" @addIngredient="addIngredient" @onDeleteItem="onDeleteItem" @onExactIngredient="onExactIngredient" />
-    <ClearList @onClearList="onClearList" />
+    </header>    
+    <IngredientForm />
+    <IngredientList />
+    <ClearList />
     <FindRecipes :ingredients="ingredientList" :exactIngredients="exactIngredients" />        
   </div>
 </template>
 
 <script>
 import FindRecipes from "./FindRecipes.vue";
-import Ingredients from "./Ingredients.vue";
+import IngredientForm from "./IngredientForm";
+import IngredientList from "./IngredientList";
 import ClearList from "./ClearList";
 
 export default {
   name: "Home",
+  props: ["testProps", "otherprop"],
   data() {
-    return {
-      msg: "Welcome to Your Vue.js App",
+    return {      
       ingredientList: [],
       newIngredient: "",
       exactIngredients: false
     };
   },
-  methods: {
-    onNewIngredient(ingredient) {
-      this.newIngredient = ingredient;
-    },
-
-    addIngredient(ingredient) {
-      console.log("ingredient added!");
-      this.ingredientList.push(ingredient);
-    },
-    onDeleteItem(index) {
-      console.log("deleting item!");
-      this.$delete(this.ingredientList, index);
-    },
-    onClearList() {
-      console.log("clearing list!");
-      this.ingredientList = [];
-    },
-    onExactIngredient(bool) {
-      console.log("inside exact");
-      this.exactIngredients = bool;
-    }
-  },
   components: {
-    FindRecipes,
-    Ingredients,
+    FindRecipes,    
+    IngredientForm,
+    IngredientList,
     ClearList
   }
 };
